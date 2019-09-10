@@ -1,7 +1,7 @@
 # Journal
 An informal log of the Makerspace journey of discovery
 ## Index
-[Get Started with the Journal](# Get Started with the Journal)
+[Get Started with the Journal](#get-started-with-the-journal)
 
 ### Get Started with the Journal
 To start adding to the Makerspace Journal, the first thing you need to do is 'fork' the repository. Then clone your fork
