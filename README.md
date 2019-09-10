@@ -1,7 +1,7 @@
 # Journal
 An informal log of the Makerspace journey of discovery
 ## Index
-[Get Started with the Journal](### Get Started with the Journal)
+[Get Started with the Journal](# Get Started with the Journal)
 
 ### Get Started with the Journal
 To start adding to the Makerspace Journal, the first thing you need to do is 'fork' the repository. Then clone your fork
@@ -17,9 +17,9 @@ git remote -v
 // This should be your fork. It will be called 'origin' and have a 'push' and 'fetch' associated with it.
 git remote add upstream https://github.com/usgs-makerspace/Journal.git 
 // The above line will create a remote connection that you have named 'upstream'.  
-// This is a connection to the canonical repository and let you pull the newest code from there.
+// This is a connection to the canonical repository and will let you pull the newest code from there.
 git remote -v
-// The line above should now have four connection, two called 'origin' and two called 'upstream'
+// The line above should now have four connections, two called 'origin' and two called 'upstream'
 ```
 
 With the basics out of the way, you are ready to start you first journal entry. In a code editor with the capacity to edit
