@@ -3,10 +3,6 @@ An informal log of the Makerspace journey of discovery
 ## Index
 #### Get Started with the Makerspace Journal
 [Get Started with the Journal](#get-started-with-the-journal)
-[Working Base Tile Layers](#working-base-tile-layers)
-#### Water Budget and Estimation and Evaluation Project (WBEEP)
-[Project Setup](https://github.com/usgs-makerspace/wbeep-viz#project-setup-1)
-[Automated Builds](https://github.com/usgs-makerspace/wbeep-viz#automated-builds-1)
 
 #### Font Awesome 
 [Use Font Awesome with Vue](https://github.com/usgs-makerspace/wbeep-viz#add-font-awesome-icons-1)
@@ -14,15 +10,21 @@ An informal log of the Makerspace journey of discovery
 #### Leaflet
 [Leaflet Example Using Vue and Vue2Leaflet Plugin](https://github.com/usgs-makerspace/makerspace-vue2leaflet-example#testing-area-for-wbeep)
 
-#### Vue
-[Vue Example Using USWD and USGS Headers and Footers](https://github.com/usgs-makerspace/makerspace-vue2leaflet-example#testing-area-for-wbeep)
+#### Water Budget and Estimation and Evaluation Project (WBEEP)
+[Project Setup](https://github.com/usgs-makerspace/wbeep-viz#project-setup-1)
+
+[Automated Builds](https://github.com/usgs-makerspace/wbeep-viz#automated-builds-1)
+
+[Working Base Tile Layers](#working-base-tile-layers)
 
 #### United States Web Design System (USWDS)
 [Vue Example Using USWD and USGS Headers and Footers](https://github.com/usgs-makerspace/makerspace-vue2leaflet-example#testing-area-for-wbeep)
 
+#### Vue
+[Vue Example Using USWD and USGS Headers and Footers](https://github.com/usgs-makerspace/makerspace-vue2leaflet-example#testing-area-for-wbeep)
 
 
-
+***
 ### Get Started with the Journal
 To start adding to the Makerspace Journal, the first thing you need to do is 'fork' the repository. Then clone your fork
 to your local machine and set the canonical master branch as a remote connection named 'upstream'. 
