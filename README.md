@@ -29,8 +29,10 @@ An informal log of the Makerspace journey of discovery
 #### Vue
 [Vue Example Using USWD and USGS Headers and Footers](https://github.com/usgs-makerspace/makerspace-vue2leaflet-example#testing-area-for-wbeep)
 
-#### Tile sets
+#### Mapbox gl js
 [How to Overzoom in Mapbox](#tile-layers-overzoom)
+
+[Background Black in Fullscreen mode](#background-black-in-fullscreen-mode)
 
 ***
 ### Get Started with the Journal
@@ -150,9 +152,23 @@ Loading a specific directory
  - loading files from 14th zoom level locally, to 14 zoom level on S3:
 aws s3 sync ./14 s3://wbeep-test-website/openmaptiles/14/ --content-encoding 'gzip' --content-type 'application/x-protobuf'.
 ```
-So we now have set of United States 'streets' vector tiles (levels 0-14) hosted on 'test'.
 
-We still need to figure out how we should deploy this to the tiers (keeping in mind that this process took about 5 days)
+### Background Black in Fullscreen mode
+Just a quick note, when styling a map for use with Mapbox gl we ran into this problem, the background appeared as intended 
+when in the standard mode, but when switching to 'fullscreen' the background turned black. We are not sure of the internal Mapbox
+gl reasons for this, however the cause was the use of an 'alpha' channel on the background. This issue will occur whether 
+you use 'rgba' or 'hsla' for the  color definition. The weird part of this issue is not that the background appears black while
+in  'fullscreen' mode but that it acts correctly in the normal mode. Additionally, if a background color is not set, any color
+fills using an alpha channel will also turn black upon entering 'fullscreen' mode.
+```
+To avoid the black background follow these steps
+1 - always set a backgound color
+2 - always use and color definition without an 'alpha' channel for the background - example rgb(0, 0, 0)
+
+note - If you set the background color as stated above, you will have no issues with using colors with 'alpha' channels 
+with other layer color fills. If not, well . . . who knows what evils will result
+```
+
 
 ### Tile Layers Overzoom
 'Overzoom' is a feature of Mapbox gl that allows it to make an educated 'guess' and display a map layer for tiles that
