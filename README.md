@@ -10,6 +10,9 @@ An informal log of the Makerspace journey of discovery
 #### Font Awesome 
 [Use Font Awesome with Vue](https://github.com/usgs-makerspace/wbeep-viz#add-font-awesome-icons-1)
 
+[Using Facebook/Twitter Icons with Vue](https://github.com/usgs-makerspace/wbeep-viz#using-facebook-and-twitter-icons-with-vue)
+
+[Font Awesome (secret) styling](https://github.com/usgs-makerspace/wbeep-viz#fontawesome-icon-secret-styling)
 #### Leaflet
 [Leaflet Example Using Vue and Vue2Leaflet Plugin](https://github.com/usgs-makerspace/makerspace-vue2leaflet-example#testing-area-for-wbeep)
 
@@ -196,7 +199,7 @@ code would be located in the 'script' section.
                 container: 'map',
                 zoom: 3,
                 minZoom: 3,
-                maxZoom: 23,
+                maxZoom: 24,
                 center: [-75.072994, 40.544454],
                 pitch: 0, // tips the map from 0 to 60 degrees
                 bearing: 0, // starting rotation of the map from 0 to 360
@@ -207,13 +210,13 @@ code would be located in the 'script' section.
 ```
 Setting the 'minZoom' (note the term 'minZoom' is not the 'official' Mapbox term, which is 'minzoom' (all one word, all lower case), 
 I can't really get into a full explanation of why this now, other than to say it is a Vue framework related thing, so just pretend that the term used is 'minzoom',
-and we will move on). Notice that the minimum and maximum here are 3, and 23. The complete range of zoom levels of
-which Mapbox gl is capable of rendering is 0 to 23. The setting of 0 represents the entire world (mercator projection) in 
-view port (the area of the screen in which the map is allowed to show), while 23 represents an extremely zoomed in version.
+and we will move on). Notice that the minimum and maximum here are 3, and 24. The complete range of zoom levels of
+which Mapbox gl is capable of rendering is 0 to 24. The setting of 0 represents the entire world (mercator projection) in 
+view port (the area of the screen in which the map is allowed to show), while 24 represents an extremely zoomed in version.
 A internet search of 'mapbox zoom levels' will give you a full explanation of the topic. 
 
 What the above code does is set the 'hard stops' of the map. The map will not zoom out past zoom level 3 (which is just a bit bigger than the size of the continental US) nor will it
-zoom in past level 23. Of course, level 23 is the limit that Mapbox gl can display, so that line could be omitted without a 
+zoom in past level 24. Of course, level 24 is the limit that Mapbox gl can display, so that line could be omitted without a 
 change in application behavior, however for completeness will leave it in.  
 
 So far this all seems straight forward and sensible, however the next steps required to tell Mapbox gl to overzoom are 
@@ -239,7 +242,7 @@ Important stuff about setting the zoom level parameters in the source
         when you zoom past the limit of your tile set
 2) If you set the limits past the extents of your tile set, there are no ill effects, however your map layer for
         that tile will go blank just as mentioned above.  
-3) If you set the 'minzoom' limit inside your tile extent, the any tile above that zoom will appear be blank.
+3) If you set the 'minzoom' limit inside your tile extent, any tile above that zoom will appear be blank.
 4) If you set the 'maxzoom' limit inside your tile extent, Mapbox gl will stop loading the real tiles and will 
         'overzoom' the remaining zoom levels to the limit you set in the first step of the section,
         back when the map was created.
@@ -255,8 +258,8 @@ to less than or equal to your actual set extent.
 Now this brings us to the third place where the zoom extents in the are defined, and that is at the layer level. So far
 we have discussed how to control the zoom levels of the entire map (at map creation), of the entire source (when we
 define the tile source), and now we will describe the zoom extents at the layer level and how that relates to 'overzoom'.
-After the 'sources' are defined in the Mapbox style sheet the different layers are styles. Each vector tile 'source' can contain
-many 'layers', and each of those can be given 'minzoom' and 'maxzoom' extents. 
+After the 'sources' are defined in the Mapbox style sheet the different layers are styled. Each vector tile 'source' can contain
+many 'layers', and each of those can be given 'minzoom' and 'maxzoom' parameters. 
 ```
 Example of a 'layer' defined in the Mapbox gl style sheet
             {
@@ -278,7 +281,7 @@ Example of a 'layer' defined in the Mapbox gl style sheet
                     'line-dasharray': [2, 1]
                 },
                 'minzoom': 3,  // here are the settings we have an interest in 
-                'maxzoom': 23,
+                'maxzoom': 24,
                 'source': 'openmaptiles',
                 'source-layer': 'waterway',
                 'type': 'line',
@@ -289,7 +292,7 @@ Example of a 'layer' defined in the Mapbox gl style sheet
                 'inLegend' : false
             },
 ```
-Just as with the map, and the source definitions, the each layer does not require you to set the 'maxzoom' or the 'minzoom'.
+Just as with the map and the source definitions, layer definitions do not require you to set the 'maxzoom' or the 'minzoom'.
 However, setting these will give you control as to the zoom level a particular layer will first appear. For example,
 having a 'minzoom' set to 3, as above, in conjunction with the map and source settings, will cause the layer to show
 as soon as the map appears. This is because map has a 'minzoom' of 3, which is the same as the layer. If we set the 
